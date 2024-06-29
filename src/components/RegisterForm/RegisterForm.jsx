@@ -13,17 +13,18 @@ export const RegisterForm = ({submit}) => {
    }
     return <Formik initialValues={{ name: '', email: '', password: '' }} onSubmit={handleSubmit}>
         <Form className={css.form}> 
-            <label htmlFor={nameId}>Name:
-            <Field name='name' id={ nameId} />
-            </label>
-            <label htmlFor={emailId}>Email:
-
-            <Field name='email' id={ emailId} />
-            </label>
-            <label htmlFor={passwordId}>Password:
-
-            <Field name='password' id={passwordId} type='password' />
-            </label>
+            <div className={css.fieldWrapper}>
+                <label className={css.labelName} htmlFor={nameId}>Name:</label>
+                <Field className={css.fieldName} name='name' id={ nameId} />
+            </div>
+            <div className={css.fieldWrapper}>
+                <label className={css.labelEmail} htmlFor={emailId}>Email:</label>
+                <Field name='email' id={ emailId} />
+            </div>
+            <div className={css.fieldWrapper}>
+                <label htmlFor={passwordId}>Password:</label>
+                <Field name='password' id={passwordId} type='password' />
+            </div>
             <button type="submit">Register</button>
         </Form>
     </Formik>

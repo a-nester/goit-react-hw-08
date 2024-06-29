@@ -12,7 +12,7 @@
     box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
 }
 input {
-    position: relative;
+    /* position: relative; */
 
 }
 .form input {
@@ -38,6 +38,24 @@ input {
     color: red;
 }
 
+/* .form input:hover + label {
+color: blue;
+    /* margin-left: -300px; */
+/* } */ 
+
+.fieldWrapper {
+    position: relative;
+}
+
 label {
     position: absolute;
+    top: 25%;
+    left: 15px;
+    transition: all 250ms ease;
+}
+
+.fieldWrapper:hover label {
+    background-color: white;
+    color: blue;
+    transform: translateY(-100%);
 }
