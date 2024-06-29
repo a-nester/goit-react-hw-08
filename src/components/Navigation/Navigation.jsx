@@ -1,12 +1,18 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 export const Navigation = () => {
   return (
-    <>
-      <NavLink to="/Login">Log in</NavLink>
-      <NavLink to="/Register">Register</NavLink>
-    </>
+    <nav>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/contacts">Contacts</NavLink>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
-export default Navigation
+export default Navigation;

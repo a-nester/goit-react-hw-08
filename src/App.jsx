@@ -10,6 +10,8 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import { Suspense } from 'react';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,22 +22,22 @@ function App() {
   return (
     <>
       <AppBar />
-      {/* <Suspense> */}
       <Routes>
         <Route path='/' element={<HomePage /> } />
-        {/* <Route path='/auth' element={<HomePage/>}> */}
-        <Route path='/login' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
         <Route path='/register'element={<RegisterPage />} />
-        {/* </Route> */}
-        <Route path='/contacts' element={<ContactList /> } />
+        <Route path='/contacts' element={<ContactsPage /> } />
         <Route path='*' element={<div>404</div> } />  
       </Routes>
-      {/* </Suspense> */}
       <div>
         {/* <ContactForm /> */}
         {/* <SearchBox /> */}
         {/* <ContactList /> */}
       </div>
+        {/* </Route> */}
+      {/* <Suspense> */}
+        {/* <Route path='/auth' element={<HomePage/>}> */}
+      {/* </Suspense> */}
     </>
   );
 }

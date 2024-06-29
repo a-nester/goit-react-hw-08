@@ -11,10 +11,7 @@
     border-radius: 18px;
     box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
 }
-input {
-    /* position: relative; */
 
-}
 .form input {
     color: black;
     background: inherit;
@@ -37,11 +34,6 @@ input {
 .error {
     color: red;
 }
-
-/* .form input:hover + label {
-color: blue;
-    /* margin-left: -300px; */
-/* } */ 
 
 .fieldWrapper {
     position: relative;
