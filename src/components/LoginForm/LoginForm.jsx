@@ -1,8 +1,8 @@
 import { Field, Form, Formik } from 'formik';
 import { useId } from 'react';
-import css from './RegisterForm.module.css';
+import css from './LoginForm.module.css';
 
-export const RegisterForm = ({ submit }) => {
+export const LoginForm = ({ submit }) => {
   const nameId = useId();
   const emailId = useId();
   const passwordId = useId();
@@ -12,14 +12,10 @@ export const RegisterForm = ({ submit }) => {
   };
   return (
     <Formik
-      initialValues={{ name: '', email: '', password: '' }}
+      initialValues={{ email: '', password: '' }}
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
-        <div className={css.fieldWrapper}>
-          <label htmlFor={nameId}>Name:</label>
-          <Field name="name" id={nameId} />
-        </div>
         <div className={css.fieldWrapper}>
           <label htmlFor={emailId}>Email:</label>
           <Field name="email" id={emailId} />
@@ -28,10 +24,10 @@ export const RegisterForm = ({ submit }) => {
           <label htmlFor={passwordId}>Password:</label>
           <Field name="password" id={passwordId} type="password" />
         </div>
-        <button className={css.btn} type="submit">Register</button>
+        <button className={css.btn} type="submit">Login</button>
       </Form>
     </Formik>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
