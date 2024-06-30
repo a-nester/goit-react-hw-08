@@ -26,24 +26,28 @@ export const ContactForm = () => {
         onSubmit={handleSubmit}
       >
         <Form className={css.form}>
-          <label htmlFor={idName}>Name</label>
-          <Field
-            name="name"
-            type="text"
-            id={idName}
-            placeholder="Input name"
-            required
-          />
+          <div className={css.fieldWrapper}>
+            <label htmlFor={idName}>Name:</label>
+            <Field
+              name="name"
+              type="text"
+              id={idName}
+              // placeholder="Input name"
+              required
+            />
           <ErrorMessage className={css.error} name="name" component="span" />
-          <label htmlFor={idNumber}>Number</label>
-          <Field
-            name="number"
-            type="tel"
-            id={idNumber}
-            placeholder="Input number"
-            required
-          />
+          </div>
+          <div className={css.fieldWrapper}>
+            <label htmlFor={idNumber}>Number:</label>
+            <Field
+              name="number"
+              type="tel"
+              id={idNumber}
+              // placeholder="Input number"
+              required
+            />
           <ErrorMessage className={css.error} name="number" component="span" />
+          </div>
           <Button>Add contact</Button>
         </Form>
       </Formik>
