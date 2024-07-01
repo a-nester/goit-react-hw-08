@@ -1,11 +1,11 @@
-import { useId } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { ValidSchema, initialValues } from "../helper";
-import { Button } from "../Button/Button";
+import { useId } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { ValidSchema, initialValues } from '../helper';
+import { Button } from '../Button/Button';
 
-import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import css from './ContactForm.module.css';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contacts/operations';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export const ContactForm = () => {
               // placeholder="Input name"
               required
             />
-          <ErrorMessage className={css.error} name="name" component="span" />
+            <ErrorMessage className={css.error} name="name" component="span" />
           </div>
           <div className={css.fieldWrapper}>
             <label htmlFor={idNumber}>Number:</label>
@@ -46,7 +46,11 @@ export const ContactForm = () => {
               // placeholder="Input number"
               required
             />
-          <ErrorMessage className={css.error} name="number" component="span" />
+            <ErrorMessage
+              className={css.error}
+              name="number"
+              component="span"
+            />
           </div>
           <Button>Add contact</Button>
         </Form>
