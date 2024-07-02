@@ -11,7 +11,9 @@ export const UserInfo = () => {
   return (
     <div>
       <p>Hello, {name}</p>
-      <button onClick={handleLogout}>Logout</button>
+      <button type="button" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 };

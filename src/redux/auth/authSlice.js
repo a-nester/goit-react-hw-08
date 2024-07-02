@@ -33,13 +33,12 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(current.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.user = payload;
-        // state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(current.rejected, state => {
         state.token = null;
+        state.isLoggedIn = false;
       });
   },
 });
