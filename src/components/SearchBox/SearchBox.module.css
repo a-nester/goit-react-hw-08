@@ -30,3 +30,34 @@
   border: 2px solid #1825e0;
   outline-style: none;
 }
+
+.fieldWrapper {
+  position: relative;
+}
+
+label {
+  position: absolute;
+  top: 25%;
+  left: 15px;
+  transition: all 250ms ease;
+}
+
+.fieldWrapper:hover label {
+  background-color: white;
+  color: blue;
+  transform: translateY(-100%);
+}
+
+.inpFilled {
+  background-color: white;
+  color: blue;
+  transform: translateY(-100%);
+}
+
+.error {
+  position: absolute;
+  color: red;
+  background-color: white;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

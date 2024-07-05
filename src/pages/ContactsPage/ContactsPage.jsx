@@ -1,7 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
 import ContactList from "../../components/ContactList/ContactList";
-import { selectContacts } from "../../redux/contacts/selectors";
 import ContactForm from "../../components/ContactForm/ContactForm";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import css from "./ContactsPage.module.css";
+
+import { selectContacts } from "../../redux/contacts/selectors";
+import { useDispatch, useSelector } from "react-redux";
 import { addContact, fetchContacts } from "../../redux/contacts/operations";
 import { useEffect } from "react";
 
@@ -17,10 +20,12 @@ export const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.wrapper}>
       <ContactForm submit={createContact} />
-      {contacts && <ContactList />}
-      <SearchBox />
+      <div>
+        <SearchBox />
+        {contacts && <ContactList />}
+      </div>
     </div>
   );
 };
