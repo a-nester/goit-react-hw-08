@@ -1,20 +1,18 @@
-import './App.css';
-import { useEffect } from 'react';
-import { ContactForm } from './components/ContactForm/ContactForm';
-import { ContactList } from './components/ContactList/ContactList';
-import { SearchBox } from './components/SearchBox/SearchBox';
-import { useDispatch } from 'react-redux';
+import "./App.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import { current } from "./redux/auth/operations";
+import PrivatRoute from "./components/PrivatRoute/PrivatRoute";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
 
-import { AppBar } from './components/AppBar/AppBar';
-import { Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import { Suspense } from 'react';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import ContactsPage from './pages/ContactsPage/ContactsPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import { current } from './redux/auth/operations';
-import PrivatRoute from './components/PrivatRoute/PrivatRoute';
-import PublicRoute from './components/PublicRoute/PublicRoute';
+import { Suspense } from "react";
+
+import HomePage from "./pages/HomePage/HomePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import ContactsPage from "./pages/ContactsPage/ContactsPage";
+import { AppBar } from "./components/AppBar/AppBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,15 +34,6 @@ function App() {
         </Route>
         <Route path="*" element={<div>404</div>} />
       </Routes>
-      <div>
-        {/* <ContactForm /> */}
-        {/* <SearchBox /> */}
-        {/* <ContactList /> */}
-      </div>
-      {/* </Route> */}
-      {/* <Suspense> */}
-      {/* <Route path='/auth' element={<HomePage/>}> */}
-      {/* </Suspense> */}
     </>
   );
 }
