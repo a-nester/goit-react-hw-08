@@ -31,7 +31,6 @@
   outline-style: none;
 }
 
-
 .fieldWrapper {
   position: relative;
 }
@@ -49,10 +48,16 @@ label {
   transform: translateY(-100%);
 }
 
+.inpFilled {
+  background-color: white;
+  color: blue;
+  transform: translateY(-100%);
+}
+
 .error {
   position: absolute;
   color: red;
   background-color: white;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 150%);
 }

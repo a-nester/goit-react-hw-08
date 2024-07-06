@@ -9,7 +9,10 @@ export const selectFilteredContacts = createSelector(
   [selectContacts, selectSearchName],
   (contacts, searchName) => {
     return contacts.filter((elem) => {
-      return elem.name.toLowerCase().includes(searchName.toLowerCase());
+      return (
+        elem.name.toLowerCase().includes(searchName.toLowerCase()) ||
+        elem.number.toLowerCase().includes(searchName.toLowerCase())
+      );
     });
   }
 );
