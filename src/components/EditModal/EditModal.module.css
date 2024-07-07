@@ -31,10 +31,6 @@
   outline-style: none;
 }
 
-.error {
-  color: red;
-}
-
 .fieldWrapper {
   position: relative;
 }
@@ -50,31 +46,6 @@ label {
   background-color: white;
   color: blue;
   transform: translateY(-100%);
-}
-
-.btn {
-  width: 95px;
-  height: 40px;
-  background-color: #2054fd;
-  border-radius: 8px;
-  border: none;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  margin: 2px;
-  padding: 0;
-  transition: all 250ms;
-}
-
-.btn:hover {
-  background-color: #426eff;
-}
-
-.title {
-  font-size: 24px;
 }
 
 .inpFilled {

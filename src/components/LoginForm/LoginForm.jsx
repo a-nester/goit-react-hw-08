@@ -1,30 +1,58 @@
-import { Field, Form, Formik } from 'formik';
-import { useId } from 'react';
-import css from './LoginForm.module.css';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useId, useState } from "react";
+import css from "./LoginForm.module.css";
+import { ValidSchema } from "../helper";
+import toast from "react-hot-toast";
 
 export const LoginForm = ({ submit }) => {
-  const nameId = useId();
+  const [filledEmail, setFilledEmail] = useState(false);
+  const [filledPass, setFilledPass] = useState(false);
   const emailId = useId();
   const passwordId = useId();
+
+  const handleChange = (evt) => {
+    const target = evt.currentTarget;
+    target.email.value ? setFilledEmail(true) : setFilledEmail(false);
+    target.password.value ? setFilledPass(true) : setFilledPass(false);
+  };
+
   const handleSubmit = (values, actions) => {
     submit(values);
     actions.resetForm();
   };
+
   return (
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{ email: "", password: "" }}
+      // validationSchema={ValidSchema}
       onSubmit={handleSubmit}
     >
-      <Form className={css.form}>
+      <Form className={css.form} onChange={handleChange}>
+        <p className={css.title}>Login</p>
         <div className={css.fieldWrapper}>
-          <label htmlFor={emailId}>Email:</label>
+          <label className={filledEmail ? css.inpFilled : ""} htmlFor={emailId}>
+            Email:
+          </label>
           <Field name="email" id={emailId} />
+          <ErrorMessage className={css.error} name="email" component="span" />
         </div>
         <div className={css.fieldWrapper}>
-          <label htmlFor={passwordId}>Password:</label>
+          <label
+            className={filledPass ? css.inpFilled : ""}
+            htmlFor={passwordId}
+          >
+            Password:
+          </label>
           <Field name="password" id={passwordId} type="password" />
+          <ErrorMessage
+            className={css.error}
+            name="password"
+            component="span"
+          />
         </div>
-        <button className={css.btn} type="submit">Login</button>
+        <button className={css.btn} type="submit">
+          Login
+        </button>
       </Form>
     </Formik>
   );

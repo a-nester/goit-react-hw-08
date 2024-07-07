@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import { Formik, Form, Field, ErrorMessage, useField } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ValidSchema, initialValues } from "../helper";
 import { Button } from "../Button/Button";
 
@@ -30,7 +30,7 @@ export const ContactForm = () => {
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={ValidSchema}
+        // validationSchema={ValidSchema}
         onSubmit={handleSubmit}
       >
         <Form className={css.form} onChange={handleNameChange}>

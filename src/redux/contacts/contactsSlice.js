@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./operations";
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from "./operations";
+import toast from "react-hot-toast";
 
 const contactsInitialState = {
   items: [],
@@ -32,17 +38,22 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items.push(action.payload);
+        toast.success("Contact successfully added!");
       })
       .addCase(addContact.rejected, handleRejected)
+      .addCase(editContact.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex((el) => el.id === payload.id);
+        state.items.splice(index, 1, payload);
+        toast.success("Contact successfully edited!");
+      })
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = state.items.filter((el) => el.id !== action.payload.id);
-        // const index = state.items.indexOf(
-        //   (item) => item.id === action.payload.id
-        // );
-        // state.items.splice(index, 1);
+        toast.success("Contact successfully deleted!");
       })
       .addCase(deleteContact.rejected, handleRejected);
   },

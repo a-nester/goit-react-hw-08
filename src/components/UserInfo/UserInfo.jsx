@@ -1,6 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
-import { logOut } from '../../redux/auth/operations';
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
+import { logOut } from "../../redux/auth/operations";
+import css from "./UserInfo.module.css";
 
 export const UserInfo = () => {
   const { name } = useSelector(selectUser);
@@ -9,7 +10,7 @@ export const UserInfo = () => {
     dispatch(logOut());
   };
   return (
-    <div>
+    <div className={css.wrapper}>
       <p>Hello, {name}</p>
       <button type="button" onClick={handleLogout}>
         Logout

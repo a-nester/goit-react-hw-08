@@ -7,7 +7,12 @@ export const ValidSchema = Yup.object().shape({
     .required("Required"),
   number: Yup.string()
     .min(3, "Too short number!")
-    .max(50, "Too long name!")
+    .max(50, "Too long number!")
+    .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .min(3, "Too short password!")
+    .max(50, "Too long password!")
     .required("Required"),
 });
 
