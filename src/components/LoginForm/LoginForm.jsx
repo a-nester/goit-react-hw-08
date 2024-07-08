@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useId, useState } from "react";
 import css from "./LoginForm.module.css";
 import { ValidSchemaLogin } from "../helper";
+import { NavLink } from "react-router-dom";
 
 export const LoginForm = ({ submit }) => {
   const [filledEmail, setFilledEmail] = useState(false);
@@ -52,6 +53,9 @@ export const LoginForm = ({ submit }) => {
         <button className={css.btn} type="submit">
           Login
         </button>
+        <p>
+          or <NavLink to="/register">Register</NavLink>
+        </p>
       </Form>
     </Formik>
   );
