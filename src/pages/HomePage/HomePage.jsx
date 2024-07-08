@@ -1,7 +1,15 @@
-export const HomePage = () => {
-    return <>
-        <p>HOME PAGE</p>
-        </>
-}
+import { NavLink, Navigate } from "react-router-dom";
+import css from "./HomePage.module.css";
 
-export default HomePage
+export const HomePage = () => {
+  return (
+    <div className={css.wrapper}>
+      <p>This is your Phonebook. </p>
+      <p>
+        Click here, to see your <NavLink to="/contacts">contacts</NavLink>
+      </p>
+    </div>
+  );
+};
+
+export default HomePage;

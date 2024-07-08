@@ -1,8 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useId, useState } from "react";
 import css from "./LoginForm.module.css";
-import { ValidSchema } from "../helper";
-import toast from "react-hot-toast";
+import { ValidSchemaLogin } from "../helper";
 
 export const LoginForm = ({ submit }) => {
   const [filledEmail, setFilledEmail] = useState(false);
@@ -24,11 +23,11 @@ export const LoginForm = ({ submit }) => {
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
-      // validationSchema={ValidSchema}
+      validationSchema={ValidSchemaLogin}
       onSubmit={handleSubmit}
     >
       <Form className={css.form} onChange={handleChange}>
-        <p className={css.title}>Login</p>
+        <h2>Login</h2>
         <div className={css.fieldWrapper}>
           <label className={filledEmail ? css.inpFilled : ""} htmlFor={emailId}>
             Email:

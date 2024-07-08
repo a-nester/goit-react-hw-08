@@ -12,11 +12,8 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import { AppBar } from "./components/AppBar/AppBar";
-import Message from "./components/Message/Message";
+import Layout from "./components/Layout/Layout";
 import { selectIsRefreshing } from "./redux/auth/selectors";
-import Loader from "./components/Loader/Loader";
-import { selectIsLoading } from "./redux/contacts/selectors";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,26 +22,24 @@ function App() {
   }, [dispatch]);
 
   const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoading = useSelector(selectIsLoading);
 
   return isRefreshing ? (
     <div>...Refreshing</div>
   ) : (
     <>
-      <AppBar />
-      <Message />
-      {isLoading && <Loader />}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route element={<PublicRoute />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Route>
-        <Route element={<PrivatRoute />}>
-          <Route path="/contacts" element={<ContactsPage />} />
-        </Route>
-        <Route path="*" element={<div>404</div>} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route element={<PublicRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Route>
+          <Route element={<PrivatRoute />}>
+            <Route path="/contacts" element={<ContactsPage />} />
+          </Route>
+          <Route path="*" element={<div>404</div>} />
+        </Routes>
+      </Layout>
     </>
   );
 }
