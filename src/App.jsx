@@ -1,19 +1,21 @@
 import "./App.css";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { refreshUser } from "./redux/auth/operations";
+import { Suspense } from "react";
+import { selectIsRefreshing } from "./redux/auth/selectors";
+
 import PrivatRoute from "./components/PrivatRoute/PrivatRoute";
 import PublicRoute from "./components/PublicRoute/PublicRoute";
 
-import { Suspense } from "react";
-
-import HomePage from "./pages/HomePage/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import Layout from "./components/Layout/Layout";
-import { selectIsRefreshing } from "./redux/auth/selectors";
+import Loader from "./components/Loader/Loader";
+
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 
 function App() {
   const dispatch = useDispatch();
@@ -28,17 +30,19 @@ function App() {
   ) : (
     <>
       <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route element={<PublicRoute />}>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-          </Route>
-          <Route element={<PrivatRoute />}>
-            <Route path="/contacts" element={<ContactsPage />} />
-          </Route>
-          <Route path="*" element={<div>404</div>} />
-        </Routes>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route element={<PublicRoute />}>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+            </Route>
+            <Route element={<PrivatRoute />}>
+              <Route path="/contacts" element={<ContactsPage />} />
+            </Route>
+            <Route path="*" element={<div>404</div>} />
+          </Routes>
+        </Suspense>
       </Layout>
     </>
   );

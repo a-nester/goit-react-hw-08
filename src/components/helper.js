@@ -1,4 +1,9 @@
+import axios from "axios";
 import * as Yup from "yup";
+
+export const API = axios.create({
+  baseURL: "https://connections-api.goit.global",
+});
 
 export const ValidSchemaContact = Yup.object().shape({
   name: Yup.string()
