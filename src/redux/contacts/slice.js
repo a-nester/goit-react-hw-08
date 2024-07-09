@@ -6,6 +6,7 @@ import {
   editContact,
 } from "./operations";
 import toast from "react-hot-toast";
+import { logOut } from "../auth/operations";
 
 const contactsInitialState = {
   items: [],
@@ -55,7 +56,10 @@ const contactsSlice = createSlice({
         state.items = state.items.filter((el) => el.id !== action.payload.id);
         toast.success("Contact successfully deleted!");
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+      });
   },
 });
 
