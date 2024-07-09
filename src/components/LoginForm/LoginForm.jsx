@@ -3,12 +3,15 @@ import { useId, useState } from "react";
 import css from "./LoginForm.module.css";
 import { ValidSchemaLogin } from "../helper";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/auth/operations";
 
-export const LoginForm = ({ submit }) => {
+export const LoginForm = () => {
   const [filledEmail, setFilledEmail] = useState(false);
   const [filledPass, setFilledPass] = useState(false);
   const emailId = useId();
   const passwordId = useId();
+  const dispatch = useDispatch();
 
   const handleChange = (evt) => {
     const target = evt.currentTarget;
@@ -17,7 +20,7 @@ export const LoginForm = ({ submit }) => {
   };
 
   const handleSubmit = (values, actions) => {
-    submit(values);
+    dispatch(login(values));
     actions.resetForm();
   };
 
