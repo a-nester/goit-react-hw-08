@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 500px;
+  min-width: 370px;
+  max-width: 500px;
   height: auto;
   margin-top: 50px;
   padding: 10px;
@@ -15,7 +16,7 @@
 .form input {
   color: black;
   background: inherit;
-  width: 400px;
+  width: 100%;
   height: 50px;
   border-radius: 12px;
   border: 1px solid #838282;
@@ -33,6 +34,7 @@
 
 .fieldWrapper {
   position: relative;
+  width: 100%;
 }
 
 label {

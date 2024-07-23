@@ -17,9 +17,9 @@ export const ValidSchemaContact = Yup.object().shape({
 });
 
 export const ValidSchemaLogin = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string().email("Invalid email").required("Email required"),
   password: Yup.string()
-    .min(6, "Too short, min 6 symbols!")
+    .min(7, "Min 7 simbols!")
     .max(15, "Too long password!")
     .required("Password required!"),
 });
@@ -31,7 +31,7 @@ export const ValidSchemaRegister = Yup.object().shape({
     .required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
-    .min(6, "Too short, min 6 symbols!")
+    .min(7, "Min 7 simbols!")
     .max(15, "Too long password!")
     .required("Password required!"),
 });

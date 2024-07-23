@@ -34,6 +34,7 @@ export const ContactForm = () => {
         onSubmit={handleSubmit}
       >
         <Form className={css.form} onChange={handleNameChange}>
+          <h2>Add new contact</h2>
           <div className={css.fieldWrapper}>
             <label className={filledName ? css.inpFilled : ""} htmlFor={idName}>
               Name:

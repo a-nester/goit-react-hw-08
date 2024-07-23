@@ -19,7 +19,7 @@ export const ContactsPage = () => {
   return (
     <div className={css.wrapper}>
       <ContactForm />
-      <div>
+      <div className={css.contactsBox}>
         <SearchBox />
         {contacts && <ContactList />}
       </div>

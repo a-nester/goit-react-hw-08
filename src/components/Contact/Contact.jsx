@@ -29,7 +29,7 @@ export const Contact = ({ element: { id, name, number } }) => {
             <FaPhoneAlt /> {number}
           </p>
         </div>
-        <div>
+        <div className={css.btnWrapper}>
           <button type="button" className={css.editButton} onClick={handleEdit}>
             <GrEdit />
           </button>
