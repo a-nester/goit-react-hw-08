@@ -2,11 +2,14 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useId, useState } from "react";
 import css from "./RegisterForm.module.css";
 import { ValidSchemaRegister } from "../helper";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/operations";
 
-export const RegisterForm = ({ submit }) => {
+export const RegisterForm = () => {
   const [filledName, setFilledName] = useState(false);
   const [filledEmail, setFilledEmail] = useState(false);
   const [filledPass, setFilledPass] = useState(false);
+  const dispatch = useDispatch();
 
   const nameId = useId();
   const emailId = useId();
@@ -20,7 +23,7 @@ export const RegisterForm = ({ submit }) => {
   };
 
   const handleSubmit = (values, actions) => {
-    submit(values);
+    dispatch(register(values));
     actions.resetForm();
   };
   return (
