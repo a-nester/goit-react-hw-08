@@ -5,7 +5,7 @@
   justify-content: center;
   min-width: 370px;
   max-width: 500px;
-  height: 350px;
+  /* height: 350px; */
   margin: auto;
   margin-top: 50px;
   gap: 18px;
@@ -54,7 +54,7 @@ label {
 }
 
 .btn {
-  width: 95px;
+  min-width: 95px;
   height: 40px;
   background-color: #2054fd;
   border-radius: 8px;
@@ -63,10 +63,27 @@ label {
   text-align: center;
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.5;
   letter-spacing: 0.04em;
   margin: 2px;
-  padding: 0;
+  /* padding: 10px; */
+  transition: all 250ms;
+}
+
+.btnGoogle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 95px;
+  height: 40px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid rgb(56, 53, 53);
+  color: #2054fd;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  margin: 2px;
   transition: all 250ms;
 }
 

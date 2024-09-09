@@ -5,8 +5,9 @@ import { useState } from "react";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import EditModal from "../EditModal/EditModal";
 import { GrEdit } from "react-icons/gr";
+import { FaRegTrashCan } from "react-icons/fa6";
 
-export const Contact = ({ element: { id, name, number } }) => {
+export const Contact = ({ element: { id, name, phoneNumber } }) => {
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
 
@@ -26,7 +27,7 @@ export const Contact = ({ element: { id, name, number } }) => {
             <FaUser /> {name}
           </p>
           <p>
-            <FaPhoneAlt /> {number}
+            <FaPhoneAlt /> {phoneNumber}
           </p>
         </div>
         <div className={css.btnWrapper}>
@@ -39,11 +40,11 @@ export const Contact = ({ element: { id, name, number } }) => {
               setActive={setOpenEdit}
               id={id}
               name={name}
-              number={number}
+              number={phoneNumber}
             />
           )}
           <button type="button" className={css.button} onClick={handleDelete}>
-            Delete
+            <FaRegTrashCan />
           </button>
           {openDelete && (
             <DeleteModal

@@ -11,6 +11,7 @@ import PublicRoute from "./components/PublicRoute/PublicRoute";
 
 import Layout from "./components/Layout/Layout";
 import Loader from "./components/Loader/Loader";
+import OAuthPage from "./pages/OAuthPage/OAuthPage";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
@@ -36,6 +37,7 @@ function App() {
             <Route element={<PublicRoute />}>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/oauth-redirect" element={<OAuthPage />} />
             </Route>
             <Route element={<PrivatRoute />}>
               <Route path="/contacts" element={<ContactsPage />} />

@@ -9,13 +9,15 @@ export const ContactList = () => {
 
   return (
     <ul className={css.list}>
-      {filteredContacts.map((el) => {
-        return (
-          <li key={nanoid()}>
-            <Contact element={el} />
-          </li>
-        );
-      })}
+      {filteredContacts
+        ? filteredContacts.map((el) => {
+            return (
+              <li key={nanoid()}>
+                <Contact element={el} />
+              </li>
+            );
+          })
+        : "no contacts"}
     </ul>
   );
 };

@@ -2,7 +2,9 @@ import axios from "axios";
 import * as Yup from "yup";
 
 export const API = axios.create({
-  baseURL: "https://connections-api.goit.global",
+  // baseURL: "https://connections-api.goit.global",
+  // baseURL: "https://nodejs-hw-mongodb-j3zc.onrender.com",
+  baseURL: "http://localhost:3000",
 });
 
 export const ValidSchemaContact = Yup.object().shape({
@@ -11,8 +13,8 @@ export const ValidSchemaContact = Yup.object().shape({
     .max(50, "Too long name!")
     .required("Required"),
   number: Yup.string()
-    .min(7, "Too short, min 7 digits!")
-    .max(12, "Too long number!")
+    .min(9, "Too short, min 9 digits!")
+    .max(13, "Too long number!")
     .required("Required"),
 });
 
@@ -36,4 +38,4 @@ export const ValidSchemaRegister = Yup.object().shape({
     .required("Password required!"),
 });
 
-export const initialValues = { name: "", number: "" };
+export const initialValues = { name: "", number: "", contactType: "personal" };
