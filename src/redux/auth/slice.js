@@ -39,7 +39,7 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user = payload.user;
-        state.token = payload.token;
+        state.token = payload.accessToken;
         state.isLoggedIn = true;
         toast.success("Successfully logged in!");
       })
@@ -48,6 +48,7 @@ const authSlice = createSlice({
         state.OAuthURL = payload.url;
       })
       .addCase(loginOAuth.fulfilled, (state, { payload }) => {
+        state.OAuthURL = "";
         state.user = payload.data.user;
         state.token = payload.data.accessToken;
         state.isLoggedIn = true;

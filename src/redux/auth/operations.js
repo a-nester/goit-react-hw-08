@@ -12,7 +12,7 @@ export const register = createAsyncThunk(
   "auth/register",
   async (userData, thunkAPI) => {
     try {
-      const response = await API.post("users/signup", { code: userData });
+      const response = await API.post("auth/register", userData);
       setHeaderAuthToken(response.data.token);
       return response.data;
     } catch (error) {
@@ -25,8 +25,8 @@ export const login = createAsyncThunk(
   "auth/login",
   async (userLogData, thunkAPI) => {
     try {
-      const response = await API.post("users/login", userLogData);
-      setHeaderAuthToken(response.data.token);
+      const response = await API.post("auth/login", userLogData);
+      setHeaderAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,6 +54,7 @@ export const loginOAuth = createAsyncThunk(
         code: userData,
       });
       setHeaderAuthToken(response.data.data.accessToken);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -65,7 +66,7 @@ export const logOut = createAsyncThunk(
   "auth/logout",
   async (_, { thunkAPI }) => {
     try {
-      await API.post("users/logout");
+      await API.post("auth/logout");
       clearHeaderAuthToken();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -79,7 +80,7 @@ export const refreshUser = createAsyncThunk(
     try {
       const state = getState();
       setHeaderAuthToken(state.auth.token);
-      const response = await API.get("users/current");
+      const response = await API.get("auth/refresh");
       return response.data;
     } catch (error) {
       clearHeaderAuthToken();

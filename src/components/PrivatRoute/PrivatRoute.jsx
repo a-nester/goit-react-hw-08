@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
-import { Navigate, Outlet } from 'react-router-dom';
-import { selectLoggedIn, selectToken } from '../../redux/auth/selectors';
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router-dom";
+import { selectLoggedIn, selectToken } from "../../redux/auth/selectors";
 
 export const PrivatRoute = () => {
   const isLoggedIn = useSelector(selectLoggedIn);

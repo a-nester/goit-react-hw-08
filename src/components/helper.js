@@ -5,6 +5,7 @@ export const API = axios.create({
   // baseURL: "https://connections-api.goit.global",
   // baseURL: "https://nodejs-hw-mongodb-j3zc.onrender.com",
   baseURL: "http://localhost:3000",
+  withCredentials: true,
 });
 
 export const ValidSchemaContact = Yup.object().shape({
