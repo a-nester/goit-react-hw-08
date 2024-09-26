@@ -7,7 +7,7 @@ import EditModal from "../EditModal/EditModal";
 import { GrEdit } from "react-icons/gr";
 import { FaRegTrashCan } from "react-icons/fa6";
 
-export const Contact = ({ element: { id, name, phoneNumber } }) => {
+export const Contact = ({ element: { _id, name, phoneNumber } }) => {
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
 
@@ -38,7 +38,7 @@ export const Contact = ({ element: { id, name, phoneNumber } }) => {
             <EditModal
               active={openEdit}
               setActive={setOpenEdit}
-              id={id}
+              id={_id}
               name={name}
               number={phoneNumber}
             />
@@ -50,7 +50,7 @@ export const Contact = ({ element: { id, name, phoneNumber } }) => {
             <DeleteModal
               active={openDelete}
               setActive={setOpenDelete}
-              id={id}
+              id={_id}
             />
           )}
         </div>

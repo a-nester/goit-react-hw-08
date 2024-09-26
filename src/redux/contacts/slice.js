@@ -28,17 +28,17 @@ const contactsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, handlePending)
-      .addCase(fetchContacts.fulfilled, (state, action) => {
+      .addCase(fetchContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload.data.data;
+        state.items = payload.data.data;
       })
       .addCase(fetchContacts.rejected, handleRejected)
       .addCase(addContact.pending, handlePending)
-      .addCase(addContact.fulfilled, (state, action) => {
+      .addCase(addContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.items.push(action.payload);
+        state.items.push(payload.data);
         toast.success("Contact successfully added!");
       })
       .addCase(addContact.rejected, handleRejected)
@@ -53,7 +53,7 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = state.items.filter((el) => el.id !== action.payload.id);
+        state.items = state.items.filter((el) => el._id !== action.payload);
         toast.success("Contact successfully deleted!");
       })
       .addCase(deleteContact.rejected, handleRejected)
