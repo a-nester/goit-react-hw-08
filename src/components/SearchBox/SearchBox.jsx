@@ -6,6 +6,7 @@ import { useState } from "react";
 export const SearchBox = () => {
   const [filled, setFilled] = useState(false);
   const dispatch = useDispatch();
+
   const handleChange = (evt) => {
     const searchName = evt.target.value;
     searchName ? setFilled(true) : setFilled(false);

@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import css from "./LoginForm.module.css";
 import { ValidSchemaLogin } from "../helper";
 import { NavLink } from "react-router-dom";
@@ -31,10 +31,13 @@ export const LoginForm = () => {
     actions.resetForm();
   };
 
-  const handleOAuth = async () => {
+  const handleOAuth = () => {
     dispatch(getOAuthURL());
-    navigate(OAuthURL);
   };
+
+  useEffect(() => {
+    OAuthURL && navigate(OAuthURL);
+  }, [OAuthURL]);
 
   return (
     <Formik

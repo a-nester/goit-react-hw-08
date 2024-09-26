@@ -37,6 +37,8 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, handleRejected)
       .addCase(login.fulfilled, (state, { payload }) => {
+        console.log(payload);
+
         state.isLoading = false;
         state.user = payload.user;
         state.token = payload.accessToken;
@@ -49,8 +51,8 @@ const authSlice = createSlice({
       })
       .addCase(loginOAuth.fulfilled, (state, { payload }) => {
         state.OAuthURL = "";
-        state.user = payload.data.user;
-        state.token = payload.data.accessToken;
+        state.user = payload.user;
+        state.token = payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, (state) => {
@@ -67,7 +69,8 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        // state.user = payload;
+        state.token = payload.data.accessToken;
         state.isRefreshing = false;
         state.isLoggedIn = true;
       })

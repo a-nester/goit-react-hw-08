@@ -38,7 +38,7 @@ export const getOAuthURL = createAsyncThunk(
   "auth/getOAuthURL",
   async (_, thunkAPI) => {
     try {
-      const response = await API.get("auth/get-oauth-url");
+      const response = await API.get("/auth/get-oauth-url");
       return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -80,8 +80,10 @@ export const refreshUser = createAsyncThunk(
     try {
       const state = getState();
       setHeaderAuthToken(state.auth.token);
-      const response = await API.get("auth/refresh");
-      return response.data;
+      const { data } = await API.get("auth/refresh");
+      setHeaderAuthToken(data.data.accessToken);
+
+      return data;
     } catch (error) {
       clearHeaderAuthToken();
       return rejectWithValue(error.message);
